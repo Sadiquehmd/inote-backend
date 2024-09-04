@@ -5,10 +5,12 @@ connectMongo();
 const app = express()
 const port = process.env.PORT || 4000
 app.use(cors({
-  origin: 'https://main--inotesby.netlify.app',
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-}))
+  origin: 'https://main--inotesby.netlify.app',  // Allow this origin
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],  // Allowed methods
+  allowedHeaders: ['Content-Type', 'Authorization'],  // Allowed headers
+}));
+
+app.options('*', cors()); 
 app.use(express.json())
 app.use('/api/auth',require('./routes/auth'))
 app.use('/api/notes',require('./routes/notes'))
