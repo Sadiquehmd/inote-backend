@@ -5,7 +5,7 @@ const { body, validationResult } = require("express-validator"); //used for data
 const bcrypt = require("bcryptjs"); //use for password security
 const jwt = require("jsonwebtoken"); //use for authToken
 const fetchUser = require("../middleware/fetchuser");
-const { errors } = require("@feathersjs/client");
+
 const JWT_TOKEN = "Welcome$sad";
 
 
