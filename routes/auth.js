@@ -21,7 +21,7 @@ router.post(
     //validation checker
     const result = validationResult(req);
     if (!result.isEmpty()) {
-      return res.send({status:false, errors: result.array() }); //if got any errors it will return the error
+      return res.json({status:false, errors: result.array() }); //if got any errors it will return the error
     }
     try {
       //checking email if it exist so it end the execution with error message
@@ -46,7 +46,7 @@ router.post(
       res.json({status:true, authToken });
     } catch (err) {
       console.error(err.message);
-      res.status(500).send("Internal server error");
+      res.status(500).json({status:false, errors: "Internal Server Error" });
     }
   }
 );
