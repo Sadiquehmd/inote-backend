@@ -7,7 +7,7 @@ const port = process.env.PORT || 4000
 app.use(cors({
   origin: 'https://inote-eta.vercel.app/',  // Allow this origin
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],  // Allowed methods
-  allowedHeaders: ['Content-Type', 'Authorization'],  // Allowed headers
+  allowedHeaders: ['Content-Type', 'Authorization','Access-Control-Allow-Origin'],  // Allowed headers
 }));
 
 app.options('*', cors()); 
