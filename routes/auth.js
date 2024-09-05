@@ -62,7 +62,7 @@ router.post(
   async (req, res) => {
     const result = validationResult(req);
     if (!result.isEmpty()) {
-      return res.send({status:false, errors: result.array() });
+      return res.json({status:false, errors: result.array() });
     }
     const { email, password } = req.body;
     try {
@@ -87,7 +87,7 @@ router.post(
       res.json({status:true, authToken });
     }  catch (err) {
       console.error(err.message);
-      res.status(500).send("Internal server error");
+      res.status(500).json({status:false, error: "Internal server error" });
     }
   }
 );
@@ -98,10 +98,10 @@ router.post("/getuser", fetchUser, async (req, res) => {
   try {
     const userid=req.user.id
     const user = await User.findById(userid).select("-password");
-    res.send(user)
+    res.json(user)
   }  catch (err) {
     console.error(err.message);
-    res.status(500).send("Internal server error");
+    res.status(500).json({status:false, error: "Internal server error" });
   }
 });
 
